@@ -4,7 +4,7 @@ import gspread
 gc = gspread.service_account(filename = "credentials.json")
 
 #티켓 관리용 스프레드시트 링크 입력
-sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1zhWw3ua2IYSpx0MxjE8eBP4NrR4z5Yodc6_0TaG4BkY")
+sh = gc.open_by_url("")
 
 #시트 목록 가져오기
 worksheet_list = sh.worksheets()
