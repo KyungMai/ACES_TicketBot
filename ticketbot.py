@@ -6,7 +6,7 @@ if __name__ == "__main__":
     gc = gspread.service_account(filename = "credentials.json")
 
     #티켓 관리용 스프레드시트 링크 입력
-    sh = gc.open_by_url("")
+    sh = gc.open_by_url("https://docs.google.com/spreadsheets/d/1zhWw3ua2IYSpx0MxjE8eBP4NrR4z5Yodc6_0TaG4BkY/edit#gid=1707556420")
 
     #시트 목록 가져오기
     worksheet_list = sh.worksheets()
@@ -38,8 +38,9 @@ if __name__ == "__main__":
 
     #정렬을 위해 int와 str이 섞여있는 전화번호의 형식 맞춤
     for i in tickets:
-        i[1] = str(i[1])
-
+        if (type(i[1]) == int):
+            i[1] = '0'+str(i[1])
+    
     #이름의 사전순으로 tickets를 정렬하되 한글이 다른 언어보다 먼저 오게 함
     #이름이 같은 경우 전화번호 순으로 정렬
     tickets.sort(key = lambda x: (x[0] if ord('ㄱ') <= ord(x[0][0]) <= ord('힣') else '힣' + x[0], x[1]))
