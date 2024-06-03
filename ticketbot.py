@@ -36,6 +36,9 @@ if __name__ == "__main__":
     for i in pay.get_all_records():
         tickets.append(list(i.values())[1:4])
 
+    #user input에 의해 발생할 수 있는 빈칸 삭제
+    tickets = [x for x in tickets if x != ['','','']]
+
     #정렬을 위해 int와 str이 섞여있는 전화번호의 형식 맞춤
     for i in tickets:
         if (type(i[1]) == int):
